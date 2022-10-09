@@ -3,9 +3,11 @@ package com.gupaoedu.vip.mall.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.gupaoedu.mall.goods.model.Category;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface CategoryService extends IService<Category> {
 
     /**

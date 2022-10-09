@@ -3,27 +3,27 @@ package com.gupaoedu.vip.mall.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gupao.edu.vip.com.gupaoedu.mall.util.RespResult;
-import com.gupaoedu.mall.goods.model.Brank;
+import com.gupaoedu.mall.goods.model.Brand;
 import com.gupaoedu.mall.goods.model.Category;
-import com.gupaoedu.vip.mall.service.BrankService;
+import com.gupaoedu.vip.mall.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/brank")
+@RequestMapping(value = "/brand")
 @CrossOrigin //跨域
-public class BrankController {
+public class BrandController {
 
     @Autowired
-    private BrankService brankService;
+    private BrandService brandService;
 
     /*8
     增加方法
      */
     @PostMapping ()
-    public RespResult add(@RequestBody Brank brank){
+    public RespResult add(@RequestBody Brand brand){
 
         return RespResult.ok();
     }
@@ -32,9 +32,9 @@ public class BrankController {
      * 修改方法
      */
     @PutMapping
-    public RespResult update(@RequestBody Brank brank){
+    public RespResult update(@RequestBody Brand brand){
 
-        brankService.updateById(brank);
+        brandService.updateById(brand);
 
         return RespResult.ok();
 
@@ -47,7 +47,7 @@ public class BrankController {
     @DeleteMapping("/{id}")
     public RespResult delete(@PathVariable(value = "id") String id ){
 
-        brankService.removeById(id);
+        brandService.removeById(id);
         return RespResult.ok();
     }
 
@@ -56,9 +56,9 @@ public class BrankController {
      */
 
     @PostMapping(value = "/list")
-    public RespResult<List<Brank>> listRespResult(@RequestBody(required = false) Brank brank){
+    public RespResult<List<Brand>> listRespResult(@RequestBody(required = false) Brand brand){
 
-        List<Brank> list=brankService.queryList(brank);
+        List<Brand> list=brandService.queryList(brand);
 
         return RespResult.ok(list);
 
@@ -69,11 +69,11 @@ public class BrankController {
      */
 
     @PostMapping(value = "list/{page}/{size}")
-    public RespResult<Page<Brank>> pageInfo(@PathVariable(value = "page")Long currentPage,
+    public RespResult<Page<Brand>> pageInfo(@PathVariable(value = "page")Long currentPage,
                                             @PathVariable(value = "size")Long size,
-                                            @RequestBody(required = false) Brank brand){
+                                            @RequestBody(required = false) Brand brand){
 
-        Page<Brank> pageInfo=brankService.queryPageList(currentPage, size, brand);
+        Page<Brand> pageInfo=brandService.queryPageList(currentPage, size, brand);
 
         return RespResult.ok(pageInfo);
 
@@ -86,8 +86,8 @@ public class BrankController {
     @GetMapping("/category/{pid}")
     public RespResult<List<Category>> categoryBrands (@PathVariable(value = "pid") Integer pid){
 
-        List<Brank> branks=brankService.queryBrankByCategoryId(pid);
-        return RespResult.ok(branks);
+        List<Brand> brands =brandService.queryBrankByCategoryId(pid);
+        return RespResult.ok(brands);
 
     }
 }

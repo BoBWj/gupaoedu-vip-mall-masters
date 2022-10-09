@@ -4,7 +4,10 @@ package com.gupaoedu.vip.mall.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.gupaoedu.mall.goods.model.Product;
 import com.gupaoedu.mall.goods.model.Spu;
+import org.springframework.stereotype.Service;
 
+
+@Service
 public interface SpuService extends IService<Spu> {
 
 

@@ -2,27 +2,27 @@ package com.gupaoedu.vip.mall.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.gupaoedu.mall.goods.model.Brank;
+import com.gupaoedu.mall.goods.model.Brand;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
-public interface BrankService extends IService<Brank> {
+@Service
+public interface BrandService extends IService<Brand> {
 
     /**
      *  多条件查下
      */
 
-    List<Brank> queryList(Brank brand);
+    List<Brand> queryList(Brand brand);
 
     /**
      * 分页查询
      */
-    Page<Brank> queryPageList(Long currentPage, Long size, Brank brank);
+    Page<Brand> queryPageList(Long currentPage, Long size, Brand brand);
 
     /**
      * 根据分类ID查询相对应的品牌jige
      */
-    List<Brank> queryBrankByCategoryId(Integer id);
+    List<Brand> queryBrankByCategoryId(Integer id);
 }

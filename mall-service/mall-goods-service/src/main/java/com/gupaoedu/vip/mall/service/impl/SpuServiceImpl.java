@@ -59,7 +59,7 @@ public class SpuServiceImpl extends ServiceImpl<SpuMapper, Spu> implements SpuSe
         //查询三级分类
         Category category = categpryMapper.selectById(spu.getCategoryThreeId());
         //查询品牌
-        Brank brand = brandMapper.selectById(spu.getBrandId());
+        Brand brand = brandMapper.selectById(spu.getBrandId());
         //当前时间
         Date now = new Date();
         //新增Sku集合

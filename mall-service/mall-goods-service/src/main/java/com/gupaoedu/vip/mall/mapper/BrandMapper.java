@@ -1,14 +1,14 @@
 package com.gupaoedu.vip.mall.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.gupaoedu.mall.goods.model.Brank;
+import com.gupaoedu.mall.goods.model.Brand;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public interface BrandMapper extends BaseMapper<Brank> {
+public interface BrandMapper extends BaseMapper<Brand> {
 
     /**
      * 1.根据分类ID查询品牌ID集合

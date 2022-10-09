@@ -1,12 +1,11 @@
 package com.gupaoedu.vip.mall.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.gupaoedu.mall.goods.model.Brank;
+import com.gupaoedu.mall.goods.model.Brand;
 import com.gupaoedu.vip.mall.mapper.BrandMapper;
-import com.gupaoedu.vip.mall.service.BrankService;
+import com.gupaoedu.vip.mall.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -15,7 +14,7 @@ import java.util.List;
 
 
 @Service
-public class BrankServiceImpl extends ServiceImpl<BrandMapper, Brank> implements BrankService {
+public class BrandServiceImpl extends ServiceImpl<BrandMapper, Brand> implements BrandService {
 
     @Autowired
     private  BrandMapper brandMapper;
@@ -26,9 +25,9 @@ public class BrankServiceImpl extends ServiceImpl<BrandMapper, Brank> implements
      * @return
      */
     @Override
-    public List<Brank> queryList(Brank brand) {
+    public List<Brand> queryList(Brand brand) {
 
-        QueryWrapper<Brank> queryWrapper =new QueryWrapper<Brank>();
+        QueryWrapper<Brand> queryWrapper =new QueryWrapper<Brand>();
         if (!StringUtils.isEmpty(brand.getName())){
             queryWrapper.like("name",brand.getName());
         }
@@ -44,17 +43,17 @@ public class BrankServiceImpl extends ServiceImpl<BrandMapper, Brank> implements
 
     /***
      * 分页查询
-     * @param brank
+     * @param brand
      * @return
      */
 
     @Override
-    public Page<Brank> queryPageList(Long currentPage, Long size, Brank brank) {
+    public Page<Brand> queryPageList(Long currentPage, Long size, Brand brand) {
 
-        Page<Brank> page = brandMapper.selectPage(
-                new Page<Brank>(currentPage, size),
-                new QueryWrapper<Brank>()
-                        .like("name", brank.getName()));
+        Page<Brand> page = brandMapper.selectPage(
+                new Page<Brand>(currentPage, size),
+                new QueryWrapper<Brand>()
+                        .like("name", brand.getName()));
         return page;
     }
 
@@ -64,12 +63,12 @@ public class BrankServiceImpl extends ServiceImpl<BrandMapper, Brank> implements
      * @return
      */
     @Override
-    public List<Brank> queryBrankByCategoryId(Integer id) {
+    public List<Brand> queryBrankByCategoryId(Integer id) {
         //根据分类ID查询品牌ID集合
         List<Integer> brandIds=brandMapper.queryBrandIds(id);
         //根据品牌ID查询品牌集合
         if (brandIds !=null &&brandIds.size()>0){
-            return brandMapper.selectList(new QueryWrapper<Brank>().in("id",brandIds));
+            return brandMapper.selectList(new QueryWrapper<Brand>().in("id",brandIds));
         }
         //
         return null;

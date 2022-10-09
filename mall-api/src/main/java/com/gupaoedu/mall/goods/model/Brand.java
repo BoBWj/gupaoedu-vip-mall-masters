@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Brank {
+public class Brand {
 
     //主键id
     @TableId(type = IdType.AUTO,value = "id")
