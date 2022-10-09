@@ -32,6 +32,9 @@ public class BrankServiceImpl extends ServiceImpl<BrandMapper, Brank> implements
         if (!StringUtils.isEmpty(brand.getName())){
             queryWrapper.like("name",brand.getName());
         }
+//        if (!StringUtils.isEmpty(brand.getName())){
+//
+//        }
 
         if (!StringUtils.isEmpty(brand.getInitial())){
             queryWrapper.like("initial",brand.getInitial());
